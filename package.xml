@@ -7,7 +7,7 @@
   <maintainer email="wang-sy@g.ecc.u-tokyo.ac.jp">Shuangyu WANG</maintainer>
   <maintainer email="yasano@g.ecc.u-tokyo.ac.jp">Yuki Asano</maintainer>
 
-  <license>TODO</license>
+  <license>BSD 3-Clause</license>
 
   <buildtool_depend>catkin</buildtool_depend>
 
