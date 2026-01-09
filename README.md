@@ -1,5 +1,4 @@
-# lite6_labauto package
-
+# lite6_labauto
 This package works as bridge of other packages and Ufactory official packages.
 
 ## Prepare Ufactory Lite 6
@@ -42,8 +41,9 @@ Available args:
 ```
 
 
-# msg
-## LabwareOBB.msg
+# ROS msg and srv
+## msg
+**LabwareOBB.msg**
 ```
 std_msgs/Header header
 geometry_msgs/Pose pose
@@ -52,7 +52,7 @@ float32 y_width
 float32 z_height
 ```
 
-## MovePose.msg
+**MovePose.msg**
 ```
 # For pose in move_line function
 # [x,y,z,r,p,y] in unit [mm,mm,mm,rad,rad,rad]
@@ -60,8 +60,8 @@ float32 z_height
 float64[6] pose
 ```
 
-#srv
-## BeakerMani.srv
+## srv
+**BeakerMani.srv**
 ```
 # input 
 bool shake
@@ -71,7 +71,7 @@ bool success
 string message
 ```
 
-## pHMeasure.srv
+**pHMeasure.srv**
 ```
 # input
 
@@ -83,7 +83,7 @@ float32 ph
 string message
 ```
 
-## PipetteDo.srv
+**PipetteDo.srv**
 ```
 # input 
 string liquid # "HCl" or "water"
@@ -95,7 +95,7 @@ bool success
 string message
 ```
 
-## TweezersDraw.srv
+**TweezersDraw.srv**
 ```
 # input 
 bool draw
@@ -105,6 +105,6 @@ bool success
 string message
 ```
 
-# Hardware of Parallel Gripper
+## Hardware of Parallel Gripper
 As for the robot arm "Ufactory Lite 6", there is an open-source parallel gripper which can be controlled by position, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).  
 Here we used the [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md), and modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
