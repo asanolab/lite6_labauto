@@ -25,24 +25,24 @@ This package works as bridge of other packages and Ufactory official packages.
 
 ## Prepare Ufactory Lite 6
 ```
-$ roslaunch xarm_bringup lite6_server.launch robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
+roslaunch xarm_bringup lite6_server.launch robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
 ```
 
 ## Prepare camera
 Launch camera nodes (clone official Realsense-ROS packages first).
 ```
-$ roslaunch realsense2_camera rs_camera.launch
+roslaunch realsense2_camera rs_camera.launch
 ```
 
 ## Initialize or shut down Lite 6
 ```
-$ rosrun lite6_labauto robot_init.py
-$ rosrun lite6_labauto robot_disable.py
+rosrun lite6_labauto robot_init.py
+rosrun lite6_labauto robot_disable.py
 ```
 
 ## Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
 ```
-$ roslaunch robot_control all_serial_nodes.launch
+roslaunch robot_control all_serial_nodes.launch
 ```
 
 Available args:
