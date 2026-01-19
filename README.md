@@ -22,6 +22,10 @@ This package works as bridge of other packages and Ufactory official packages.
   echo "source ~/ipc_ws/devel/setup.bash" >> ~/.bashrc
   source ~/ipc_ws/devel/setup.bash
   ```
+- install python modules
+  ```
+  python3 -m pip install pyserial
+  ```
 
 ## Prepare Ufactory Lite 6
 ```
@@ -42,7 +46,7 @@ rosrun lite6_labauto robot_disable.py
 
 ## Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
 ```
-roslaunch robot_control all_serial_nodes.launch
+roslaunch lite6_labauto all_serial_nodes.launch
 ```
 
 Available args:
