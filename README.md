@@ -29,7 +29,7 @@ This package works as bridge of other packages and Ufactory official packages.
 
 ## Prepare Ufactory Lite 6
 ```
-roslaunch xarm_bringup lite6_server.launch robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
+roslaunch lite6_labauto lite6_labaute.launch  # robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
 ```
 
 ## Prepare camera
