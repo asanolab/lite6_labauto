@@ -39,6 +39,12 @@ Launch camera nodes (clone official Realsense-ROS packages first).
 roslaunch realsense2_camera rs_camera.launch
 ```
 
+## Prepare gripper
+```
+sudo chmod 666 /dev/ttyACM0
+sudo usermod -a -G dialout $USER
+```
+
 ## Initialize or shut down Lite 6
 ```
 rosrun lite6_labauto robot_init.py
