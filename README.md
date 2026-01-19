@@ -10,6 +10,10 @@ This package works as bridge of other packages and Ufactory official packages.
   wstool init src
   catkin build
   ```
+- clone pkgs
+  ```
+  
+  ```
 
 ## Prepare Ufactory Lite 6
 Launch Ufacotry Lite 6 xarm_bringup (make sure to clone official packages first).
