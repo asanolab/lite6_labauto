@@ -10,7 +10,7 @@ This package works as bridge of other packages and Ufactory official packages.
   wstool init src
   catkin build
   ```
-- clone pkgs
+- build pkgs
   ```
   git clone https://github.com/asanolab/lite6_labauto.git
   wstool merge -t . lite6_labauto/install/lite6_labauto.noetic.rosinstall
@@ -18,12 +18,14 @@ This package works as bridge of other packages and Ufactory official packages.
   rosdep install -y -r --from-paths . --ignore-src
   cd lite6_labauto
   catkin bt
+
+  echo "source ~/ipc_ws/devel/setup.bash" >> ~/.bashrc
+  source ~/ipc_ws/devel/setup.bash
   ```
 
 ## Prepare Ufactory Lite 6
-Launch Ufacotry Lite 6 xarm_bringup (make sure to clone official packages first).
 ```
-$ roslaunch xarm_bringup lite6_server.launch robot_ip:=192. show_rviz:=true add_gripper:=true
+$ roslaunch xarm_bringup lite6_server.launch robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
 ```
 
 ## Prepare camera
@@ -34,8 +36,8 @@ $ roslaunch realsense2_camera rs_camera.launch
 
 ## Initialize or shut down Lite 6
 ```
-$ rosrun robot_control robot_init.py
-$ rosrun robot_control robot_disable.py
+$ rosrun lite6_labauto robot_init.py
+$ rosrun lite6_labauto robot_disable.py
 ```
 
 ## Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
