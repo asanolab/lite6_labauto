@@ -1,6 +1,16 @@
 # lite6_labauto
 This package works as bridge of other packages and Ufactory official packages.
 
+## Install & Build
+- install ROS
+- setup workspace
+  ```
+  mkdir -p ~/catkin_ws/src
+  cd ~/catkin_ws/src
+  wstool init .
+  catkin build
+  ```
+
 ## Prepare Ufactory Lite 6
 Launch Ufacotry Lite 6 xarm_bringup (make sure to clone official packages first).
 ```
