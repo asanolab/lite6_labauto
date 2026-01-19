@@ -6,8 +6,8 @@ This package works as bridge of other packages and Ufactory official packages.
 - setup workspace
   ```
   mkdir -p ~/catkin_ws/src
-  cd ~/catkin_ws/src
-  wstool init .
+  cd ~/catkin_ws
+  wstool init src
   catkin build
   ```
 
