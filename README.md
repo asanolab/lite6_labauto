@@ -13,6 +13,7 @@ This package works as bridge of other packages and Ufactory official packages.
 - build pkgs
   ```
   git clone https://github.com/asanolab/lite6_labauto.git
+  git clone https://github.com/asanolab/pipetty_interface.git
   wstool merge -t . lite6_labauto/install/lite6_labauto.noetic.rosinstall
   wstool update
   rosdep install -y -r --from-paths . --ignore-src
