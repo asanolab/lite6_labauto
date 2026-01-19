@@ -39,9 +39,12 @@ Launch camera nodes (clone official Realsense-ROS packages first).
 roslaunch realsense2_camera rs_camera.launch
 ```
 
-## Prepare gripper
+## Prepare devices
 ```
-sudo chmod 666 /dev/ttyACM0
+sudo chmod 666 /dev/ttyACM0  # for gripper
+sudo chmod 666 /dev/ttyACM1  # for pipetty triger
+sudo chmod 666 /dev/ttyACM2  # for ph sensor 
+sudo chmod 666 /dev/ttyUSB0  # for pipetty
 sudo usermod -a -G dialout $USER
 ```
 
