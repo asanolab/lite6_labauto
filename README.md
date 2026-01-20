@@ -122,8 +122,9 @@ bool success
 string message
 ```
 
-## Hardware of Parallel Gripper
-- Gripper is from [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper) for UFactory Lite 6, which is an open-source project and can be controlled by position.
-  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used
+## Gripper
+- Gripper was made using an open-source project for UFactory Lite6, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).
+  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
+  - This gripper can be controlled by position.
   - Firmware of Arduino is placed in sketchbook folder
   - Modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
