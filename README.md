@@ -28,56 +28,38 @@ This package works as bridge of other packages and Ufactory official packages.
   python3 -m pip install pyserial
   ```
 
-## Prepare Ufactory Lite 6
+- set udev rules for devices
+  ```
+  sudo cp config/80-lite6-labauto.rules /etc/udev/rules.d/.
+  sudo udevadm control --reload
+  ```
+
+## Initialization
+### Prepare UFactory Lite 6
 ```
 roslaunch lite6_labauto lite6_labaute.launch  # robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
 ```
 
-## Prepare camera
+### Prepare camera
 Launch camera nodes (clone official Realsense-ROS packages first).
 ```
 roslaunch realsense2_camera rs_camera.launch
 ```
 
-## Prepare devices
+### Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
 ```
-sudo chmod 666 /dev/ttyACM0  # for gripper
-sudo chmod 666 /dev/ttyACM1  # for pipetty triger
-sudo chmod 666 /dev/ttyACM2  # for ph sensor 
-sudo chmod 666 /dev/ttyUSB0  # for pipetty
-sudo usermod -a -G dialout $USER
+roslaunch lite6_labauto all_serial_nodes.launch
 ```
 
-## Initialize or shut down Lite 6
+### Initialize or shut down Lite 6
 ```
 rosrun lite6_labauto robot_init.py
 rosrun lite6_labauto robot_disable.py
 ```
 
-## Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
-```
-roslaunch lite6_labauto all_serial_nodes.launch
-```
 
-Available args:
-```
-  <arg name="gripper_port"           default="/dev/ttyACM0"/>
-  <arg name="gripper_baud"           default="115200"/>
-
-  <arg name="ph_port"                default="/dev/ttyACM2"/>
-  <arg name="ph_baud"                default="9600"/>
-  <arg name="ph_publish_voltage"     default="false"/>
-
-  <arg name="pipette_motor_port"     default="/dev/ttyACM1"/>
-  <arg name="pipette_motor_baud"     default="9600"/>
-
-  <arg name="pipetty_port"           default="/dev/ttyUSB1"/>
-  <arg name="pipetty_baud"           default="31520"/>
-```
-
-
-# ROS msg and srv
-## msg
+## ROS msg and srv
+### msg
 **LabwareOBB.msg**
 ```
 std_msgs/Header header
@@ -95,7 +77,7 @@ float32 z_height
 float64[6] pose
 ```
 
-## srv
+### srv
 **BeakerMani.srv**
 ```
 # input 
@@ -140,6 +122,9 @@ bool success
 string message
 ```
 
-## Hardware of Parallel Gripper
-As for the robot arm "Ufactory Lite 6", there is an open-source parallel gripper which can be controlled by position, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).  
-Here we used the [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md), and modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
+## Gripper
+- Gripper was made using an open-source project for UFactory Lite6, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).
+  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
+  - This gripper can be controlled by position.
+  - Firmware of Arduino is placed in sketchbook folder
+  - Modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
