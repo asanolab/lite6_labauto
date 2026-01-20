@@ -123,5 +123,7 @@ string message
 ```
 
 ## Hardware of Parallel Gripper
-As for the robot arm "Ufactory Lite 6", there is an open-source parallel gripper which can be controlled by position, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).  
-Here we used the [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md), and modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
+- Gripper is from [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper) for UFactory Lite 6, which is an open-source project and can be controlled by position.
+  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used
+  - Firmware of Arduino is placed in sketchbook folder
+  - Modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
