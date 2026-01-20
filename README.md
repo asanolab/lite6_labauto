@@ -127,4 +127,5 @@ string message
   - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
   - This gripper can be controlled by position.
   - Firmware of Arduino is placed in sketchbook folder
+  - Gripper tip parts are available here. [Google Drive](https://drive.google.com/open?id=1WP06H0lVdvfj6VCkU2ATvlK_sCpn3dsM&usp=drive_fs)
   - Modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").
