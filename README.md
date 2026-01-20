@@ -57,23 +57,6 @@ rosrun lite6_labauto robot_disable.py
 roslaunch lite6_labauto all_serial_nodes.launch
 ```
 
-Available args:
-```
-  <arg name="gripper_port"           default="/dev/ttyACM0"/>
-  <arg name="gripper_baud"           default="115200"/>
-
-  <arg name="ph_port"                default="/dev/ttyACM2"/>
-  <arg name="ph_baud"                default="9600"/>
-  <arg name="ph_publish_voltage"     default="false"/>
-
-  <arg name="pipette_motor_port"     default="/dev/ttyACM1"/>
-  <arg name="pipette_motor_baud"     default="9600"/>
-
-  <arg name="pipetty_port"           default="/dev/ttyUSB1"/>
-  <arg name="pipetty_baud"           default="31520"/>
-```
-
-
 # ROS msg and srv
 ## msg
 **LabwareOBB.msg**
