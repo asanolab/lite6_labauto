@@ -28,37 +28,38 @@ This package works as bridge of other packages and Ufactory official packages.
   python3 -m pip install pyserial
   ```
 
-## Prepare Ufactory Lite 6
+- set udev rules for devices
+  ```
+  sudo cp config/80-lite6-labauto.rules /etc/udev/rules.d/.
+  sudo udevadm control --reload
+  ```
+
+## Initialization
+### Prepare UFactory Lite 6
 ```
 roslaunch lite6_labauto lite6_labaute.launch  # robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true
 ```
 
-## Prepare camera
+### Prepare camera
 Launch camera nodes (clone official Realsense-ROS packages first).
 ```
 roslaunch realsense2_camera rs_camera.launch
 ```
 
-## Prepare devices
+### Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
 ```
-sudo cp config/80-lite6-labauto.rules /etc/udev/rules.d/.
-sudo udevadm control --reload
+roslaunch lite6_labauto all_serial_nodes.launch
 ```
 
-
-## Initialize or shut down Lite 6
+### Initialize or shut down Lite 6
 ```
 rosrun lite6_labauto robot_init.py
 rosrun lite6_labauto robot_disable.py
 ```
 
-## Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
-```
-roslaunch lite6_labauto all_serial_nodes.launch
-```
 
-# ROS msg and srv
-## msg
+## ROS msg and srv
+### msg
 **LabwareOBB.msg**
 ```
 std_msgs/Header header
@@ -76,7 +77,7 @@ float32 z_height
 float64[6] pose
 ```
 
-## srv
+### srv
 **BeakerMani.srv**
 ```
 # input 
