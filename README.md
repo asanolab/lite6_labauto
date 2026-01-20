@@ -41,12 +41,10 @@ roslaunch realsense2_camera rs_camera.launch
 
 ## Prepare devices
 ```
-sudo chmod 666 /dev/ttyACM0  # for gripper
-sudo chmod 666 /dev/ttyACM1  # for pipetty triger
-sudo chmod 666 /dev/ttyACM2  # for ph sensor 
-sudo chmod 666 /dev/ttyUSB0  # for pipetty
-sudo usermod -a -G dialout $USER
+sudo cp config/80-lite6-labauto.rules /etc/udev/rules.d/.
+sudo udevadm control --reload
 ```
+
 
 ## Initialize or shut down Lite 6
 ```
