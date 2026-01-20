@@ -1,0 +1,3 @@
+- git:
+    local-name: xarm_ros
+    uri: https://github.com/xArm-Developer/xarm_ros.git

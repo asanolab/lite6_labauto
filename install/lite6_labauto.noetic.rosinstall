@@ -1,0 +1,6 @@
+- git:
+    local-name: xarm_ros
+    uri: https://github.com/xArm-Developer/xarm_ros.git
+- git:
+    local-name: auto_pipetty
+    uri: https://github.com/asanolab/auto_pipetty.git

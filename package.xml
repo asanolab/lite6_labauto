@@ -11,12 +11,16 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <build_depend>auto_pipetty</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>message_generation</build_depend>
   <build_depend>message_runtime</build_depend>
+  <build_depend>pipetty_interface</build_depend>
+  <build_depend>realsense2_camera</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
+  <build_depend>xarm_bringup</build_depend>
   <build_depend>xarm_msgs</build_depend>
 
   <build_export_depend>geometry_msgs</build_export_depend>
@@ -26,11 +30,15 @@
   <build_export_depend>xarm_msgs</build_export_depend>
   <build_export_depend>message_generation</build_export_depend>
 
+  <exec_depend>auto_pipetty</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>message_runtime</exec_depend>
+  <exec_depend>pipetty_interface</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <exec_depend>xarm_bringup</exec_depend>
   <exec_depend>xarm_msgs</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
