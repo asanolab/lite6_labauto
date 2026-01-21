@@ -35,9 +35,9 @@ This package works as bridge of other packages and Ufactory official packages.
   ```
 
 ## Initialization
-### Prepare Lite6, gripper and camera
+### Prepare robot
 ```
-roslaunch lite6_labauto lite6_labaute.launch  # launch robot and camera at the same time
+roslaunch lite6_labauto lite6_labaute.launch  # launch robot, gripper and camera at the same time
 # robot_ip:=192.168.0.166 show_rviz:=true custom_gripper:=true camera:=true
 ```
 
