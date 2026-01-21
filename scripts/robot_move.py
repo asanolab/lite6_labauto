@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from my_robot_msgs.msg import MovePose
+from lite6_labauto.msg import MovePose
 from xarm_msgs.srv import Move
 import numpy as np
 from std_msgs.msg import Bool
