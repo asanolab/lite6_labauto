@@ -1,8 +1,7 @@
+<?xml version="1.0" ?>
+
 <launch>
   <!-- ===== Args (可按需在命令行覆盖) ===== -->
-  <arg name="gripper_port"           default="/dev/lite6_openparallelgripper"/>
-  <arg name="gripper_baud"           default="115200"/>
-
   <arg name="ph_port"                default="/dev/ph_sensor"/>
   <arg name="ph_baud"                default="9600"/>
   <arg name="ph_publish_voltage"     default="false"/>
@@ -14,11 +13,6 @@
   <arg name="pipetty_baud"           default="31520"/>
 
   <group ns="robot_control">
-    <!-- gripper_serial_node -->
-    <node pkg="lite6_labauto" type="gripper_serial.py" name="gripper_serial_node" output="screen" respawn="true">
-      <param name="port" value="$(arg gripper_port)"/>
-      <param name="baud" value="$(arg gripper_baud)"/>
-    </node>
 
     <!-- ph_sensor_node -->
     <node pkg="lite6_labauto" type="pH_serial.py" name="ph_sensor_node" output="screen" respawn="true">

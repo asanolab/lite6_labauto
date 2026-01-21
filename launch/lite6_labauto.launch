@@ -1,9 +1,13 @@
 <?xml version="1.0" ?>
 
 <launch>
-  <arg name="robot_ip"    default="192.168.0.166"/>
-  <arg name="show_rviz"   default="true"/>
-  <arg name="add_gripper" default="true"/>
+  <arg name="robot_ip"       default="192.168.0.166"/>
+  <arg name="show_rviz"      default="true"/>
+  <arg name="add_gripper"    default="false"/>  <!-- original gripper -->
+  <arg name="custom_gripper" default="true"/>
+  <arg name="gripper_port"   default="/dev/lite6_openparallelgripper"/>
+  <arg name="gripper_baud"   default="115200"/>
+  <arg name="camera"         default="true"/>
 
   <!-- robot control -->
   <include file="$(find xarm_bringup)/launch/lite6_server.launch">
@@ -12,4 +16,17 @@
     <arg name="add_gripper" value="$(arg add_gripper)" />
   </include>
 
+  <!-- camera -->
+  <group if="$(arg camera)">
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+  </group>
+
+  <!-- gripper node -->
+  <group if="$(arg custom_gripper)">
+    <node pkg="lite6_labauto" type="gripper_serial.py" name="gripper_serial_node" output="screen" respawn="true">
+      <param name="port" value="$(arg gripper_port)"/>
+      <param name="baud" value="$(arg gripper_baud)"/>
+    </node>
+  </group>
+  
 </launch>
