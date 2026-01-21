@@ -35,13 +35,13 @@ This package works as bridge of other packages and Ufactory official packages.
   ```
 
 ## Initialization
-### Prepare Lite6 and camera
+### Prepare Lite6, gripper and camera
 ```
 roslaunch lite6_labauto lite6_labaute.launch  # launch robot and camera at the same time
-# robot_ip:=192.168.0.166 show_rviz:=true add_gripper:=true camera:=true
+# robot_ip:=192.168.0.166 show_rviz:=true custom_gripper:=true camera:=true
 ```
 
-### Initialize all Serial Ports (pH sensor, gripper, pipetty, pipette tip disposal motor)
+### Initialize all Serial Ports (pH sensor, pipetty, pipette tip disposal motor)
 ```
 roslaunch lite6_labauto all_serial_nodes.launch
 ```
