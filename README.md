@@ -1,5 +1,6 @@
 # lite6_labauto
-This package works as bridge of other packages and Ufactory official packages.
+This package provides a customized version of UFactory Lite6 for laboratory automation.  
+![Image](https://github.com/user-attachments/assets/d9c33df8-a048-40a5-a189-fb4538dc64d3)
 
 ## Install & Build
 - install ROS
@@ -37,13 +38,8 @@ This package works as bridge of other packages and Ufactory official packages.
 ## Initialization
 ### Prepare robot
 ```
-roslaunch lite6_labauto lite6_labaute.launch  # launch robot, gripper and camera at the same time
+roslaunch lite6_labauto lite6_labauto.launch  # launch robot, gripper and camera at the same time
 # robot_ip:=192.168.0.166 show_rviz:=true custom_gripper:=true camera:=true
-```
-
-### Initialize all Serial Ports (pH sensor, pipetty, pipette tip disposal motor)
-```
-roslaunch lite6_labauto all_serial_nodes.launch
 ```
 
 ### Initialize or shut down Lite 6
@@ -52,8 +48,17 @@ rosrun lite6_labauto robot_init.py
 rosrun lite6_labauto robot_disable.py
 ```
 
+## Gripper
+- Gripper was made using an open-source project for UFactory Lite6, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).
+  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
+  - This gripper can be controlled by position.
+  - Firmware of Arduino is placed in sketchbook folder
+  - Gripper tip parts are available here. [Google Drive](https://drive.google.com/open?id=1WP06H0lVdvfj6VCkU2ATvlK_sCpn3dsM&usp=drive_fs)
+  - Modified the gripper jaws to adapt to different objects, as shown in the figure.  
+![Image](https://github.com/user-attachments/assets/caa11f8e-b77a-432a-8f00-71bb4d26cede)
 
-## ROS msg and srv
+
+## ROS msg
 ### msg
 **LabwareOBB.msg**
 ```
@@ -71,56 +76,3 @@ float32 z_height
 
 float64[6] pose
 ```
-
-### srv
-**BeakerMani.srv**
-```
-# input 
-bool shake
----
-# output
-bool success
-string message
-```
-
-**pHMeasure.srv**
-```
-# input
-
-float32 timeout_s
----
-# output
-bool success
-float32 ph
-string message
-```
-
-**PipetteDo.srv**
-```
-# input 
-string liquid # "HCl" or "water"
-float32 volume_ul # Volume to aspirate
-int32 tip_id
----
-# output
-bool success
-string message
-```
-
-**TweezersDraw.srv**
-```
-# input 
-bool draw
----
-# output
-bool success
-string message
-```
-
-## Gripper
-- Gripper was made using an open-source project for UFactory Lite6, [OpenParallelGripper](https://github.com/hygradme/OpenParallelGripper).
-  - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
-  - This gripper can be controlled by position.
-  - Firmware of Arduino is placed in sketchbook folder
-  - Gripper tip parts are available here. [Google Drive](https://drive.google.com/open?id=1WP06H0lVdvfj6VCkU2ATvlK_sCpn3dsM&usp=drive_fs)
-  - Modified the gripper jaws to adapt to different objects, as shown in the figure, ![Modified Gripper](assets/gripper.png "gripper").

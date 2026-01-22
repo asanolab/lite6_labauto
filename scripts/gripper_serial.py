@@ -6,7 +6,7 @@ from std_msgs.msg import Float32
 
 class GripperSerialInterface:
     def __init__(self):
-        # 串口初始化
+        # Serial Initialization
         port = rospy.get_param("~port", "/dev/ttyACM0")
         baud = int(rospy.get_param("~baud", 115200))
         self.ser = serial.Serial(port, baud, timeout=1)

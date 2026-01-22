@@ -11,7 +11,7 @@ class ArmMotionBridge:
     def __init__(self):
         rospy.init_node("robot_motion_caller")
 
-        # 控制参数（可通过 launch 配置）
+        # parameters (also set in launch file)
         self.mvvelo = rospy.get_param("~mvvelo", 200.0)
         self.mvacc = rospy.get_param("~mvacc", 1000.0)
         self.mvtime = rospy.get_param("~mvtime", 0.0)
@@ -19,8 +19,8 @@ class ArmMotionBridge:
         self.relative = rospy.get_param("~relative", False)
         self.move_done_pub = rospy.Publisher("/arm_control/move_done", Bool, queue_size=1)
 
-        # 设置去重误差容忍范围（单位 mm / rad）
-        self.pose_tolerance = rospy.get_param("~pose_tolerance", 0.1)  # 一般0.1mm以内算重复
+        # parameter of tolerence within which positions are regarded the same (mm)
+        self.pose_tolerance = rospy.get_param("~pose_tolerance", 0.1)  # within 0.1mm considered as the same pose
 
         self.prev_pose = None
 
@@ -33,14 +33,14 @@ class ArmMotionBridge:
     def pose_callback(self, msg):
         current_pose = np.array(msg.pose)
 
-        # 去重：与上次执行的 pose 相比，误差 < tolerance 就不再执行
+        # remove positions (if less than tolerance, just skip)
         if self.prev_pose is not None:
             diff = np.abs(current_pose - self.prev_pose)
             if np.all(diff < self.pose_tolerance):
                 rospy.loginfo("⏸️ Received pose is same as previous (within tolerance), ignoring.")
                 return
 
-        # 记录当前 pose 为上一次
+        # record current pose as the last one
         self.prev_pose = current_pose
 
         rospy.loginfo(f"📍 Executing pose: {current_pose.tolist()}")

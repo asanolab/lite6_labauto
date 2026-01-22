@@ -1,8 +1,0 @@
-# input
-
-float32 timeout_s
----
-# output
-bool success
-float32 ph
-string message

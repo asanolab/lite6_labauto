@@ -1,8 +1,0 @@
-# input 
-string liquid # "HCl" or "water"
-float32 volume_ul # Volume to aspirate
-int32 tip_id
----
-# output
-bool success
-string message
