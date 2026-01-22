@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 
 <launch>
-  <!-- ===== Args (可按需在命令行覆盖) ===== -->
   <arg name="ph_port"                default="/dev/ph_sensor"/>
   <arg name="ph_baud"                default="9600"/>
   <arg name="ph_publish_voltage"     default="false"/>
@@ -14,12 +13,12 @@
 
   <group ns="robot_control">
 
-    <!-- ph_sensor_node -->
-    <node pkg="lite6_labauto" type="pH_serial.py" name="ph_sensor_node" output="screen" respawn="true">
-      <param name="port" value="$(arg ph_port)"/>
-      <param name="baud" value="$(arg ph_baud)"/>
-      <param name="publish_voltage" value="$(arg ph_publish_voltage)"/>
-    </node>
+    <!-- ph_sensor -->
+    <include file="$(find lite6_labauto)/launch/ph_sensor.launch">
+      <arg name="port"            value="$(arg ph_port)" />
+      <arg name="baud"            value="$(arg ph_baud)" />
+      <arg name="publish_voltage" value="$(arg ph_publish_voltage)" />
+    </include>
 
     <!-- pipette_motor_node -->
     <node pkg="auto_pipetty" type="pipette_motor_serial.py" name="pipette_motor_node" output="screen" respawn="true">
