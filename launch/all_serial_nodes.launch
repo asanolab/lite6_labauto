@@ -9,7 +9,7 @@
   <arg name="pipette_motor_port"     default="/dev/pipetty_motor"/>
   <arg name="pipette_motor_baud"     default="9600"/>
 
-  <arg name="pipetty_port"           default="/dev/pippety_pro"/>
+  <arg name="pipetty_port"           default="/dev/pipetty_pro"/>
   <arg name="pipetty_baud"           default="31520"/>
 
   <group ns="robot_control">
