@@ -38,7 +38,7 @@ This package provides a customized version of UFactory Lite6 for laboratory auto
 ## Initialization
 ### Prepare robot
 ```
-roslaunch lite6_labauto lite6_labaute.launch  # launch robot, gripper and camera at the same time
+roslaunch lite6_labauto lite6_labauto.launch  # launch robot, gripper and camera at the same time
 # robot_ip:=192.168.0.166 show_rviz:=true custom_gripper:=true camera:=true
 ```
 
