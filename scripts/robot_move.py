@@ -20,7 +20,7 @@ class ArmMotionBridge:
         self.move_done_pub = rospy.Publisher("/arm_control/move_done", Bool, queue_size=1)
 
         # parameter of tolerence within which positions are regarded the same (mm)
-        self.pose_tolerance = rospy.get_param("~pose_tolerance", 0.1)  # 一般0.1mm以内算重复
+        self.pose_tolerance = rospy.get_param("~pose_tolerance", 0.1)  # within 0.1mm considered as the same pose
 
         self.prev_pose = None
 
