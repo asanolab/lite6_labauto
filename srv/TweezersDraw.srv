@@ -1,6 +1,0 @@
-# input 
-bool draw
----
-# output
-bool success
-string message

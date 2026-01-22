@@ -19,16 +19,6 @@ add_message_files(
   LabwareOBB.msg
   )
 
-## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  BeakerMani.srv
-  pHMeasure.srv
-  PipetteDo.srv
-  TweezersDraw.srv
-  PipetteDoTwice.srv
-  )
-
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
@@ -45,7 +35,7 @@ generate_messages(
 
 catkin_package(
   CATKIN_DEPENDS message_generation message_runtime std_msgs geometry_msgs#xarm_msgs
-)
+  )
 
 ###########
 ## Build ##
@@ -63,8 +53,6 @@ catkin_install_python(PROGRAMS
    scripts/robot_init.py
    scripts/robot_move.py
    scripts/robot_disable.py
-   #scripts/pipette_motor_serial.py
    scripts/gripper_serial.py
-   scripts/pH_serial.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
    )
