@@ -11,10 +11,10 @@ class PHSensorNode:
     def __init__(self):
         rospy.init_node("ph_sensor_node")
 
-        # 可通过参数覆盖
+        # parameter settings
         self.port = rospy.get_param("~port", "/dev/ttyACM2")
         self.baud = int(rospy.get_param("~baud", 9600))
-        self.timeout = float(rospy.get_param("~timeout", 1.0))  # 串口读超时(s)
+        self.timeout = float(rospy.get_param("~timeout", 1.0))  # time out of serial reading
         self.publish_voltage = bool(rospy.get_param("~publish_voltage", True))
 
         self.pub_ph = rospy.Publisher("/pH_sensor/pH_value", Float32, queue_size=10)
@@ -31,8 +31,8 @@ class PHSensorNode:
         while not rospy.is_shutdown():
             try:
                 self.ser = serial.Serial(self.port, self.baud, timeout=self.timeout)
-                time.sleep(0.3)  # 稳定连接
-                self.ser.reset_input_buffer()  # 清空残留数据
+                time.sleep(0.3)  # to connect stably
+                self.ser.reset_input_buffer()  # clean buffer data
                 rospy.loginfo(f"[ph_sensor_node] Connected to {self.port} @ {self.baud} baud.")
                 return
             except serial.SerialException as e:
@@ -40,7 +40,7 @@ class PHSensorNode:
                 time.sleep(2.0)
 
     def _voltage_to_ph(self, v):
-        # 需求公式：pH = -12.99 * 电压 - 18.6
+        # function between pH and voltage: pH = -12.99 * 电压 - 18.6
         ph = self.k * v + self.b
         return round(ph, 2)
 
@@ -50,14 +50,14 @@ class PHSensorNode:
                 self._connect_serial()
                 continue
             try:
-                raw = self.ser.readline()  # 读取到 '\n' 截止（Arduino println 默认 CRLF）
+                raw = self.ser.readline()  # read data until '\n'
                 if not raw:
                     continue
-                s = raw.decode(errors="ignore").strip()  # 去除 \r\n 和空白
+                s = raw.decode(errors="ignore").strip()  # delete \r \n blank
                 try:
-                    v = float(s)  # 专门针对纯数字行 serial.println(voltage)
+                    v = float(s)  # for digital data # serial.println(voltage)
                 except ValueError:
-                    # 若偶尔有非数字提示信息，略过即可
+                    # if there is non-digit data
                     rospy.logdebug(f"[ph_sensor_node] skip non-numeric line: {s!r}")
                     continue
                 rospy.loginfo(f"current pH voltage: {v}")
