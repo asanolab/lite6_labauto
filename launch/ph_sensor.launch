@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <arg name="port"            default="/dev/ph_sensor"/>
+  <arg name="baud"            default="9600"/>
+  <arg name="publish_voltage" default="false"/>
+
+  <!-- ph_sensor_node -->
+  <node pkg="lite6_labauto" type="pH_serial.py" name="ph_sensor_node" output="screen" respawn="true">
+    <param name="port"            value="$(arg port)"/>
+    <param name="baud"            value="$(arg baud)"/>
+    <param name="publish_voltage" value="$(arg publish_voltage)"/>
+  </node>
+
+</launch>

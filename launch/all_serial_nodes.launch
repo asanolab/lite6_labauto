@@ -1,36 +1,30 @@
 <?xml version="1.0" ?>
 
 <launch>
-  <!-- ===== Args (可按需在命令行覆盖) ===== -->
   <arg name="ph_port"                default="/dev/ph_sensor"/>
   <arg name="ph_baud"                default="9600"/>
   <arg name="ph_publish_voltage"     default="false"/>
 
-  <arg name="pipette_motor_port"     default="/dev/pipetty_motor"/>
-  <arg name="pipette_motor_baud"     default="9600"/>
+  <arg name="pipetty_motor_port"     default="/dev/pipetty_motor"/>
+  <arg name="pipetty_motor_baud"     default="9600"/>
 
   <arg name="pipetty_port"           default="/dev/pipetty_pro"/>
   <arg name="pipetty_baud"           default="31520"/>
 
   <group ns="robot_control">
+    <!-- ph_sensor -->
+    <include file="$(find lite6_labauto)/launch/ph_sensor.launch">
+      <arg name="port"            value="$(arg ph_port)" />
+      <arg name="baud"            value="$(arg ph_baud)" />
+      <arg name="publish_voltage" value="$(arg ph_publish_voltage)" />
+    </include>
 
-    <!-- ph_sensor_node -->
-    <node pkg="lite6_labauto" type="pH_serial.py" name="ph_sensor_node" output="screen" respawn="true">
-      <param name="port" value="$(arg ph_port)"/>
-      <param name="baud" value="$(arg ph_baud)"/>
-      <param name="publish_voltage" value="$(arg ph_publish_voltage)"/>
-    </node>
-
-    <!-- pipette_motor_node -->
-    <node pkg="auto_pipetty" type="pipette_motor_serial.py" name="pipette_motor_node" output="screen" respawn="true">
-      <param name="port" value="$(arg pipette_motor_port)"/>
-      <param name="baud" value="$(arg pipette_motor_baud)"/>
-    </node>
-
-    <!-- pipetty_node -->
-    <node pkg="pipetty_interface" type="pipetty_serial.py" name="pipetty_node" output="screen" respawn="true">
-      <param name="port" value="$(arg pipetty_port)"/>
-      <param name="baud" value="$(arg pipetty_baud)"/>
-    </node>
+    <!-- pipetty node -->
+    <include file="$(find auto_pipetty)/launch/auto_pipetty.launch">
+      <arg name="pipetty_port"       value="$(arg pipetty_port)" />
+      <arg name="pipetty_baud"       value="$(arg pipetty_baud)" />
+      <arg name="pipetty_motor_port" value="$(arg pipetty_motor_port)" />
+      <arg name="pipetty_motor_baud" value="$(arg pipetty_motor_baud)" />
+    </include>
   </group>
 </launch>
