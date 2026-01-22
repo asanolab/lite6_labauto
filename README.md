@@ -42,11 +42,6 @@ roslaunch lite6_labauto lite6_labauto.launch  # launch robot, gripper and camera
 # robot_ip:=192.168.0.166 show_rviz:=true custom_gripper:=true camera:=true
 ```
 
-### Initialize all Serial Ports (pH sensor, pipetty, pipette tip disposal motor)
-```
-roslaunch lite6_labauto all_serial_nodes.launch
-```
-
 ### Initialize or shut down Lite 6
 ```
 rosrun lite6_labauto robot_init.py
@@ -63,7 +58,7 @@ rosrun lite6_labauto robot_disable.py
 ![Image](https://github.com/user-attachments/assets/caa11f8e-b77a-432a-8f00-71bb4d26cede)
 
 
-## ROS msg and srv
+## ROS msg
 ### msg
 **LabwareOBB.msg**
 ```
@@ -80,49 +75,4 @@ float32 z_height
 # [x,y,z,r,p,y] in unit [mm,mm,mm,rad,rad,rad]
 
 float64[6] pose
-```
-
-### srv
-**BeakerMani.srv**
-```
-# input 
-bool shake
----
-# output
-bool success
-string message
-```
-
-**pHMeasure.srv**
-```
-# input
-
-float32 timeout_s
----
-# output
-bool success
-float32 ph
-string message
-```
-
-**PipetteDo.srv**
-```
-# input 
-string liquid # "HCl" or "water"
-float32 volume_ul # Volume to aspirate
-int32 tip_id
----
-# output
-bool success
-string message
-```
-
-**TweezersDraw.srv**
-```
-# input 
-bool draw
----
-# output
-bool success
-string message
 ```

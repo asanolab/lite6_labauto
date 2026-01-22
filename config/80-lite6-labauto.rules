@@ -1,2 +1,1 @@
 SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", SYMLINK+="lite6_openparallelgripper", MODE="0666"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", SYMLINK+="ph_sensor", MODE="0666"
