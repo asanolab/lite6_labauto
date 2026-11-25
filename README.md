@@ -53,7 +53,7 @@ rosrun lite6_labauto robot_disable.py
   - [XL330_version](https://github.com/hygradme/OpenParallelGripper/blob/main/XL330_version/README.md) is used.
   - This gripper can be controlled by position.
   - Firmware of Arduino is placed in sketchbook folder
-  - Gripper tip parts are available here. [Google Drive](https://drive.google.com/open?id=1WP06H0lVdvfj6VCkU2ATvlK_sCpn3dsM&usp=drive_fs)
+  - Gripper tip parts are available here. [Dropbox](https://www.dropbox.com/scl/fo/14lr7ui1r53d99eah6gth/ANoPMfP8sAr8mP8vsIGKDCU?rlkey=w767lge7a4zjabycioyxommhy&st=l16bdw08&dl=0)
   - Modified the gripper jaws to adapt to different objects, as shown in the figure.  
 ![Image](https://github.com/user-attachments/assets/caa11f8e-b77a-432a-8f00-71bb4d26cede)
 
